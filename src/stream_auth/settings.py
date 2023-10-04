@@ -14,4 +14,6 @@ JWT_PUB_PATH = os.path.join(KEY_DIR, 'jwtRS256.key.pub')
 JWT_EXP_TIME = 2592000
 
 USER_DATABASE = '/home/gabriel/db.json'
+STREAM_DATABASE = '/home/gabriel/streams.json'
+LIVE_STREAM_DATABASE = '/home/gabriel/live_streams.json'
 STREAM_KEY_LENGTH = 32

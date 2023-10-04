@@ -27,6 +27,7 @@ class User:
         self.username = username
         self.password = str(bcrypt.hashpw(password.encode('utf-8'), salt), 'utf-8')
         self.stream_key = generate_stream_key(STREAM_KEY_LENGTH)
+        self.live = False
 
     def check_passwrod(self, password: str):
         input_pass = password.encode('utf-8')

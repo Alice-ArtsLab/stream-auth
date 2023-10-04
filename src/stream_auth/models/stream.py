@@ -5,10 +5,10 @@ class Stream:
     A single stream
     '''
 
-    def __init__(self, name: str, description: str, username: str):
-        self.name = name
+    def __init__(self, username: str, title: str, description: str):
+        self.username = username
+        self.title = title
         self.description = description
-        self.user = username
 
     def start(self):
         '''
