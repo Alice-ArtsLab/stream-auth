@@ -1,2 +1,4 @@
 bcrypt
 flask
+pyjwt
+tinydb
