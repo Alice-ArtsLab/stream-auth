@@ -39,7 +39,10 @@ def login():
     username = json['username']
     password = json['password']
 
-    log_user = userdb.search_user(username)[0]
+    try:
+        log_user = userdb.search_user(username)[0]
+    except IndexError:
+        return Response('User or password incorrect', 401)
 
     if not log_user.check_password(password):
         return Response('User or password incorrect', 401)

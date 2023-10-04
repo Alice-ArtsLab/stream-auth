@@ -13,8 +13,8 @@ JWT_PRIV_KEY = read_key(settings.JWT_PRIV_PATH)
 JWT_PUB_KEY = read_key(settings.JWT_PUB_PATH)
 
 
-def create_token(username: str, stream_key: str):
-    exp = time.time() + settings.JWT_EXP_TIME
+def create_token(username: str, stream_key: str, exp: int = settings.JWT_EXP_TIME):
+    exp = time.time() + exp
     payload = {'username': username, 'stream_key': stream_key, 'exp': exp}
     return jwt.encode(payload, JWT_PRIV_KEY, algorithm="RS256")
 
