@@ -26,7 +26,7 @@ def create():
     logging.info('User %s created with stream key %s',
                  new_user.username, new_user.stream_key)
 
-    res = {'username': new_user.username, 'stream_key': new_user.stream_key}
+    res = {'username': new_user.username, 'stream_key': str(new_user.stream_key)}
     return Response(jsonify(res), 200)
 
 
