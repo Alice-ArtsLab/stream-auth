@@ -32,11 +32,12 @@ def publish_check():
         stream_key = request.form.get('stream_key')
         username = request.form.get('name')
         stream_user = user.search_stream_key(stream_key)[0]
-        if username != stream_user['username'] or jwt.verify(stream_key.encode('utf-8')):
+        if username != stream_user['username']:
             raise ValueError
 
     except (IndexError, ValueError):
         print('vish')
         return Response('Invalid Stream Key', 401)
 
+    jwt.verify(stream_key.encode('utf-8'))
     return Response('OK', 200)

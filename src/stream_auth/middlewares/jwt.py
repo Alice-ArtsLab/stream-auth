@@ -25,10 +25,11 @@ def create_token(username: str, stream_key: str, exp: int = settings.JWT_EXP_TIM
 
 
 def verify(token: str):
-    try:
-        jwt.decode(token, JWT_PUB_KEY, algorithms=["RS256"])
-    except (jwt.exceptions.ExpiredSignatureError, jwt.InvalidTokenError):
-        return False
+    jwt.decode(token, JWT_PUB_KEY, algorithms=["RS256"])
+    # try:
+        # jwt.decode(token, JWT_PUB_KEY, algorithms=["RS256"])
+    # except (jwt.exceptions.ExpiredSignatureError, jwt.InvalidTokenError):
+        # return False
 
     return True
 
