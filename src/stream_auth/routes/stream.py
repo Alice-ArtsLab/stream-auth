@@ -35,7 +35,7 @@ def publish_check():
         if username != stream_user['username']:
             raise ValueError
 
-    except (IndexError, ValueError):
+    except (IndexError):
         print('vish')
         return Response('Invalid Stream Key', 401)
 
