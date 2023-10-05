@@ -31,7 +31,7 @@ def publish_check():
     try:
         stream_key = request.form.get('stream_key')
         username = request.form.get('name')
-        stream_user = user.search_stream_key(stream_key)[0]
+        stream_user = user.search_user(username)[0]
         if username != stream_user['username']:
             raise ValueError
 
