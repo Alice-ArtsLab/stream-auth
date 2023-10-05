@@ -22,7 +22,7 @@ def create_stream():
     StreamModel(username, title, description)
 
 
-@stream.route('/publish_check')
+@stream.route('/publish_check', methods=['POST'])
 def publish_check():
 
     # TODO: check if user created stream
@@ -32,7 +32,7 @@ def publish_check():
         stream_key = request.form.get('stream_key')
         username = request.form.get('name')
         stream_user = user.search_stream_key(stream_key)[0]
-        if username != stream_user['username']:
+        if username != stream_user['username'] or jwt.verify(stream_key.encode('utf-8')):
             raise ValueError
 
     except (IndexError, ValueError):
