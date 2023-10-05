@@ -13,12 +13,11 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 
 
-def main():
-    app.register_blueprint(user_routes)
-    app.register_blueprint(stream_routes)
-
-    app.run(host=settings.HOST, port=settings.PORT)
+# def main(*args, **kwargs):
+app.register_blueprint(user_routes)
+app.register_blueprint(stream_routes)
 
 
 if __name__ == "__main__":
-    main()
+    app.run(host=settings.HOST, port=settings.PORT)
+    # main()
