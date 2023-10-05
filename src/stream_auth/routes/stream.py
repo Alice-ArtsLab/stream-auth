@@ -27,19 +27,16 @@ def publish_check():
 
     # TODO: check if user created stream
 
-    # check if already redirected
-    token = request.form.get('token')
-    if jwt.verify(token):
-        return Response('OK', 200)
-
     # get user
     try:
-        stream_key = request.form.get('name')
-        stream_user = user.search_stream_key(stream_key)[0]['username']
-        username = stream_user['username']
+        stream_key = request.form.get('stream_key')
+        username = request.form.get('name')
+        stream_user = user.search_stream_key(stream_key)[0]
+        if username != stream_user['username']:
+            raise ValueError
 
-    except IndexError:
+    except (IndexError, ValueError):
+        print('vish')
         return Response('Invalid Stream Key', 401)
 
-    token = jwt.create_token(username, stream_key, 10)
-    return redirect(f'rtmp://127.0.0.1:33000/live/{username}?{token}', code=302)
+    return Response('OK', 200)
