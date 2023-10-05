@@ -5,6 +5,7 @@ import random
 import string
 import logging
 import bcrypt
+from stream_auth.middlewares import jwt
 
 STREAM_KEY_LENGTH = 64
 
@@ -26,7 +27,8 @@ class User:
         salt = bcrypt.gensalt()
         self.username = username
         self.password = str(bcrypt.hashpw(password.encode('utf-8'), salt), 'utf-8')
-        self.stream_key = generate_stream_key(STREAM_KEY_LENGTH)
+        # self.stream_key = generate_stream_key(STREAM_KEY_LENGTH)
+        self.stream_key = jwt.create_stream_key(username)
         self.live = False
 
     def check_passwrod(self, password: str):
@@ -51,4 +53,4 @@ class User:
         '''
         Recreate stream_key
         '''
-        self.stream_key = generate_stream_key(STREAM_KEY_LENGTH)
+        self.stream_key = jwt.create_stream_key(self.username)
