@@ -9,7 +9,7 @@ from stream_auth.middlewares import jwt
 from stream_auth.models.stream import Stream as StreamModel
 from stream_auth.database import user
 
-stream = Blueprint('user', __name__)
+stream = Blueprint('stream', __name__)
 
 
 @stream.route('/create_stream', methods=['POST'])
