@@ -27,7 +27,7 @@ def create():
                  new_user.username, new_user.stream_key)
 
     res = {'username': new_user.username, 'stream_key': str(new_user.stream_key)}
-    return Response(jsonify(res), 200)
+    return make_response(jsonify(res), 200)
 
 
 @user.route('/login', methods=['POST'])
