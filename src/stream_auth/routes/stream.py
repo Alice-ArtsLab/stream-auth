@@ -22,18 +22,19 @@ def create_stream():
     StreamModel(username, title, description)
 
 
-@stream.route('/publish_check')
+@stream.route('/publish_check', methods=['POST'])
 def publish_check():
 
     # TODO: check if user created stream
 
     # get user
-    stream_key = request.args.get('stream_key')
+    stream_key = request.form.get('stream_key')
     username = request.form.get('name')
+    print(username, stream_key)
     try:
         stream_user = user.search_user(username)[0]
 
-        if username != stream_user['username'] or not jwt.verify(stream_key):
+        if username != stream_user['username'] or not jwt.verify_stream_key(stream_key):
             raise ValueError('Invalid Token')
 
     except (IndexError, ValueError):
@@ -46,7 +47,7 @@ def publish_check():
 def test():
 
     stream_key = request.args.get('stream_key')
-    if jwt.verify(stream_key):
+    if jwt.verify_token(stream_key):
         return Response('OK', 200)
 
     return Response('Invalid Stream Key', 401)

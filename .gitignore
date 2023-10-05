@@ -5,7 +5,7 @@ teste.py
 old
 link.sh
 *.key*
-dbs/*
+dbs/
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm+all
