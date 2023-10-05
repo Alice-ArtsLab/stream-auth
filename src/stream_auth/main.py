@@ -6,7 +6,7 @@ import logging
 from flask import Flask
 from stream_auth import settings
 from stream_auth.routes.user import user as user_routes
-from stream_auth.routes.stream import user as stream_routes
+from stream_auth.routes.stream import stream as stream_routes
 
 
 app = Flask(__name__)
