@@ -30,6 +30,7 @@ def publish_check():
     # get user
     try:
         stream_key = request.form.get('stream_key')
+        print(stream_key)
         username = request.form.get('name')
         stream_user = user.search_user(username)[0]
         if username != stream_user['username']:
