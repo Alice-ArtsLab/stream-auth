@@ -40,5 +40,5 @@ def publish_check():
         print('vish')
         return Response('Invalid Stream Key', 401)
 
-    jwt.verify(stream_key.encode('utf-8'))
+    jwt.verify(stream_key)
     return Response('OK', 200)
