@@ -4,7 +4,7 @@ Settings file, where all globals should be
 import os
 
 HOST = '0.0.0.0'
-PORT = 8080
+# PORT = 33002
 
 APP_DIR = os.path.dirname(os.path.realpath(__file__))
 KEY_DIR = os.path.join(APP_DIR, 'keys')
